@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Active navigation on scroll
     const sections = document.querySelectorAll('.section');
+    const controlButtons = document.querySelector('.control-buttons');
 
     function updateActiveNav() {
         let current = '';
@@ -79,8 +80,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    window.addEventListener('scroll', updateActiveNav);
+    // Show/hide control buttons on scroll
+    function updateControlButtons() {
+        if (window.scrollY > 100) {
+            controlButtons.classList.add('visible');
+        } else {
+            controlButtons.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', function() {
+        updateActiveNav();
+        updateControlButtons();
+    });
+
     updateActiveNav();
+    updateControlButtons();
 
     // Close sidebar on mobile when clicking a nav link
     navLinks.forEach(link => {

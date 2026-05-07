@@ -638,6 +638,16 @@ ul {
     z-index: 200;
     display: flex;
     gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.control-buttons.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .sidebar-toggle,
