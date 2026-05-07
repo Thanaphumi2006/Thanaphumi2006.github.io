@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Active navigation on scroll
     const sections = document.querySelectorAll('.section');
-    const controlButtons = document.querySelector('.control-buttons');
 
     function updateActiveNav() {
         let current = '';
@@ -80,22 +79,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Show/hide control buttons on scroll
-    function updateControlButtons() {
-        if (window.scrollY > 100) {
-            controlButtons.classList.add('visible');
-        } else {
-            controlButtons.classList.remove('visible');
-        }
-    }
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
 
-    window.addEventListener('scroll', function() {
-        updateActiveNav();
-        updateControlButtons();
+    // Scroll Reveal Animation using Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
 
-    updateActiveNav();
-    updateControlButtons();
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
+    });
 
     // Close sidebar on mobile when clicking a nav link
     navLinks.forEach(link => {
