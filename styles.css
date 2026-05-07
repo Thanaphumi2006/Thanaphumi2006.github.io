@@ -233,8 +233,9 @@ ul {
 .main-content {
     flex: 1;
     margin-left: var(--sidebar-width);
-    padding: 3rem 3rem;
-    max-width: calc(var(--sidebar-width) + var(--content-max-width) + 6rem);
+    padding: 3rem 4rem;
+    max-width: var(--content-max-width);
+    margin-right: auto;
 }
 
 /* Section Styles */
@@ -757,15 +758,19 @@ body.sidebar-open .sidebar {
 
 /* Main content adjusts based on sidebar state */
 .main-content {
-    transition: margin-left 0.3s ease;
+    transition: margin-left 0.3s ease, padding 0.3s ease;
 }
 
 body:not(.sidebar-open) .main-content {
-    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
 
 body.sidebar-open .main-content {
     margin-left: var(--sidebar-width);
+    margin-right: auto;
 }
 
 /* Overlay when sidebar is open on mobile */
