@@ -1,0 +1,13 @@
+# Local settings
+.claude/
+
+# Temporary files
+Garbage/
+image/
+*.tmp
+
+# Node
+node_modules/
+
+# Build output (react-portfolio/dist is copied to root)
+react-portfolio/dist/
